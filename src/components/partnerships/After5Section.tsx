@@ -43,7 +43,7 @@ export default function After5Section() {
           </p>
 
           <div className="reveal-hidden mb-4">
-            <img src="/LONG_MAIN_LOGO.png" alt="After5 Digital" style={{ height: '48px', width: 'auto', marginBottom: '32px' }} />
+            <img src="/LONG_MAIN_LOGO.png" alt="After5 Digital" style={{ height: '60px', width: 'auto', marginBottom: '32px' }} />
           </div>
 
           <div className="reveal-hidden max-w-[560px] mb-8">

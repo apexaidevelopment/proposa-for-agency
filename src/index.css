@@ -159,12 +159,3 @@ body {
 .calendly-inline-widget {
   background: #0A0F1E !important;
 }
-
-.calendly-inline-widget iframe {
-  border-radius: 16px;
-}
-
-@keyframes skeleton-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
