@@ -43,16 +43,7 @@ export default function After5Section() {
           </p>
 
           <div className="reveal-hidden mb-4">
-            <span
-              className="text-[36px] sm:text-[44px] text-white leading-none"
-              style={{
-                fontFamily: "'Cabinet Grotesk', sans-serif",
-                fontWeight: 900,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              after5<span className="text-[#2EFFA1]">.</span>
-            </span>
+            <img src="/long_main_logo_(8).webp" alt="After5 Digital" style={{ height: '48px', width: 'auto', marginBottom: '32px' }} />
           </div>
 
           <div className="reveal-hidden max-w-[560px] mb-8">
