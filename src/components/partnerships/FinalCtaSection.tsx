@@ -1,11 +1,11 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
-interface FinalCtaSectionProps {
-  onBookCall: () => void;
-}
-
-export default function FinalCtaSection({ onBookCall }: FinalCtaSectionProps) {
+export default function FinalCtaSection() {
   const ref = useScrollReveal();
+
+  const scrollToBooking = () => {
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section
@@ -32,12 +32,29 @@ export default function FinalCtaSection({ onBookCall }: FinalCtaSectionProps) {
         </p>
         <div className="reveal-hidden">
           <button
-            onClick={onBookCall}
+            onClick={scrollToBooking}
             className="w-full md:w-auto bg-white text-[#0152ff] text-base px-12 py-4 rounded-full hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all duration-200"
             style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}
           >
             Book a Partnership Discovery Call
           </button>
+        </div>
+      </div>
+
+      <div id="booking" className="mt-16 md:mt-20" style={{ overflowX: 'hidden' }}>
+        <div style={{
+          maxWidth: '1000px',
+          margin: '0 auto',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          background: '#0A0F1E',
+          border: '1px solid rgba(255,255,255,0.05)'
+        }}>
+          <div
+            className="calendly-inline-widget h-[900px] md:h-[700px]"
+            data-url="https://calendly.com/_apexai/partnerships-call?hide_gdpr_banner=1&background_color=0a0f1e&text_color=ffffff&primary_color=0152ff"
+            style={{ minWidth: '320px', width: '100%' }}
+          />
         </div>
       </div>
     </section>

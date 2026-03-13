@@ -175,6 +175,6 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.calendly-overlay {
-  z-index: 99999 !important;
+.calendly-inline-widget {
+  background: #0A0F1E !important;
 }

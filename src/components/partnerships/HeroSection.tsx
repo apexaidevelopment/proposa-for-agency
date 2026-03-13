@@ -4,11 +4,7 @@ import { ChevronDown, Play, X } from 'lucide-react';
 const h1Words = ['AI', 'is', 'now', 'part', 'of', 'the', 'pitch.', '|||', 'Is', 'it', 'part', 'of'];
 const WORD_DELAY_MS = 40;
 
-interface HeroSectionProps {
-  onBookCall: () => void;
-}
-
-export default function HeroSection({ onBookCall }: HeroSectionProps) {
+export default function HeroSection() {
   const [on, setOn] = useState(false);
   const [vslOpen, setVslOpen] = useState(false);
   const glowRef = useRef<HTMLDivElement>(null);
@@ -32,6 +28,10 @@ export default function HeroSection({ onBookCall }: HeroSectionProps) {
     transform: on ? 'translateY(0)' : 'translateY(20px)',
     transition: `opacity 500ms cubic-bezier(0.16,1,0.3,1) ${ms}ms, transform 500ms cubic-bezier(0.16,1,0.3,1) ${ms}ms`,
   });
+
+  const scrollToBooking = () => {
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -100,7 +100,7 @@ export default function HeroSection({ onBookCall }: HeroSectionProps) {
 
             <div style={fade(1000)}>
               <button
-                onClick={onBookCall}
+                onClick={scrollToBooking}
                 className="w-full md:w-auto bg-[#0152ff] text-white text-base px-10 py-4 rounded-full hover:scale-[1.03] hover:brightness-110 hover:shadow-[0_0_40px_rgba(1,82,255,0.5)] transition-all duration-200"
                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}
               >
