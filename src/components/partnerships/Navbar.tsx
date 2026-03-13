@@ -21,7 +21,11 @@ const currencyLabels: Record<CurrencyCode, string> = {
   MYR: 'MYR (RM)',
 };
 
-export default function Navbar() {
+interface NavbarProps {
+  onBookCall: () => void;
+}
+
+export default function Navbar({ onBookCall }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [currencyOpen, setCurrencyOpen] = useState(false);
   const { currency, setCurrency, allCurrencies } = useCurrency();
@@ -52,7 +56,6 @@ export default function Navbar() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out px-6 md:px-12"
       style={{
-        padding: undefined,
         paddingTop: 16,
         paddingBottom: 16,
         background: scrolled ? 'rgba(10,15,30,0.85)' : 'transparent',
@@ -108,7 +111,7 @@ export default function Navbar() {
           </div>
 
           <button
-            onClick={() => handleNav('#booking')}
+            onClick={onBookCall}
             className="bg-[#0152ff] text-white rounded-full hover:brightness-110 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(1,82,255,0.4)] transition-all duration-200"
             style={{
               fontFamily: "'DM Sans', sans-serif",
