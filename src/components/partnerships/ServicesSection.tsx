@@ -1,50 +1,60 @@
 import { useEffect, useRef, useState } from 'react';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const services = [
   {
     title: 'AI Sales Agents',
     body: 'Every lead responded to in seconds, qualified, and booked. No humans needed.',
-    price: 'From \u00A32,000 per channel',
+    gbp: 2000,
+    suffix: ' per channel',
   },
   {
     title: 'Voice AI Qualification',
     body: 'Re-engages cold leads before they disappear. Catches, qualifies, and logs every conversation.',
-    price: 'From \u00A3500',
+    gbp: 500,
+    suffix: '',
   },
   {
     title: 'Intelligent CRM',
     body: 'Pipeline design, lead scoring, automation, and dashboards built around how the team actually works.',
-    price: 'From \u00A32,500',
+    gbp: 2500,
+    suffix: '',
   },
   {
     title: 'AI Lead Generation',
     body: 'Cold email, LinkedIn outbound, and enrichment. Booked meetings land in the calendar.',
-    price: 'From \u00A31,500/mo',
+    gbp: 1500,
+    suffix: '/mo',
   },
   {
     title: 'Database Reactivation',
     body: 'Dormant revenue in the CRM woken up. Multi-channel sequences. Results within 48 hours.',
-    price: 'Performance-based',
+    gbp: 0,
+    suffix: '',
   },
   {
     title: 'Pipeline Automation',
     body: 'Every stage automated. Follow-ups triggered, tasks assigned, deals moved forward.',
-    price: 'From \u00A31,000',
+    gbp: 1000,
+    suffix: '',
   },
   {
     title: 'Sales Intelligence',
     body: 'Every conversation analysed, every pattern surfaced. Objection trends, deal velocity, pipeline health... delivered automatically.',
-    price: 'From \u00A32,000 setup',
+    gbp: 2000,
+    suffix: ' setup',
   },
   {
     title: 'Lead Enrichment',
     body: 'Every lead researched and scored before contact. Company size, intent signals, decision-maker data.',
-    price: 'From \u00A3500',
+    gbp: 500,
+    suffix: '',
   },
   {
     title: 'Lead Scraping & Database Building',
     body: 'Targeted prospect lists filtered by signals, industry, size, and title. Clean and verified.',
-    price: 'From \u00A330',
+    gbp: 300,
+    suffix: '',
   },
 ];
 
@@ -61,6 +71,7 @@ export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { convert } = useCurrency();
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -90,6 +101,11 @@ export default function ServicesSection() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const formatPrice = (s: typeof services[0]) => {
+    if (s.gbp === 0) return 'Performance-based';
+    return `From ${convert(s.gbp)}${s.suffix}`;
+  };
 
   return (
     <section id="services" ref={sectionRef} className="bg-[#0a0f1e] py-28 lg:py-36 px-6">
@@ -150,7 +166,7 @@ export default function ServicesSection() {
                   {s.body}
                 </p>
                 <p className="text-[13px] text-[#0152ff]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                  {s.price}
+                  {formatPrice(s)}
                 </p>
               </div>
             ))}
@@ -167,7 +183,7 @@ export default function ServicesSection() {
                 className="text-xl text-white mb-3"
                 style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 800 }}
               >
-                Bespoke Automation Builds
+                Bespoke AI Automations
               </h3>
               <p className="text-[15px] text-white/50 leading-[1.75] max-w-[640px] mb-8" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 If it does not fit a package, we scope and build it from scratch. We work backwards from the outcome.
@@ -186,7 +202,7 @@ export default function ServicesSection() {
               </div>
 
               <p className="text-[13px] text-[#0152ff] mb-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                Bespoke solutions starting from &pound;500. Scoped individually.
+                Bespoke solutions starting from {convert(500)}. Scoped individually.
               </p>
               <p className="text-[15px] text-white/35" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 If you can describe the problem, we can build the solution.

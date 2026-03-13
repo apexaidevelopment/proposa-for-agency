@@ -36,7 +36,7 @@ export default function FinalCtaSection() {
             className="bg-white text-[#0152ff] text-base px-12 py-4 rounded-full hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all duration-200"
             style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700 }}
           >
-            Book a Strategy Call
+            Book a Partnership Discovery Call
           </button>
         </div>
       </div>

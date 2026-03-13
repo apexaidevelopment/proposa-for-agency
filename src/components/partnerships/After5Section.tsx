@@ -1,36 +1,38 @@
 import { MessageCircle, Mail, MessageSquare, Phone } from 'lucide-react';
 import { useScrollReveal, useCountUp } from '../../hooks/useScrollReveal';
+import { useCurrency } from '../../context/CurrencyContext';
 
-const channels = [
+const channelsBase = [
   {
     icon: MessageCircle,
     title: 'WhatsApp Agent',
     body: 'Responds, qualifies, books. Same thread.',
-    price: 'From \u00A32,000',
+    gbp: 2000,
   },
   {
     icon: Mail,
     title: 'Email Agent',
     body: 'Every inbound email read and replied in seconds.',
-    price: 'From \u00A32,000',
+    gbp: 2000,
   },
   {
     icon: MessageSquare,
     title: 'SMS Agent',
     body: 'The fallback that catches everyone else. 98% open rate.',
-    price: 'From \u00A32,000',
+    gbp: 2000,
   },
   {
     icon: Phone,
     title: 'Voice AI',
     body: 'Outbound calls that qualify and log to CRM. Human-like. Automatic.',
-    price: 'From \u00A3500',
+    gbp: 500,
   },
 ];
 
 export default function After5Section() {
   const ref = useScrollReveal();
   const stat = useCountUp(391);
+  const { convert } = useCurrency();
 
   return (
     <section id="after5" className="bg-[#0a0f1e] py-16 lg:py-24 px-6" ref={ref}>
@@ -40,12 +42,19 @@ export default function After5Section() {
             Part of the ApexAI Family
           </p>
 
-          <h2
-            className="reveal-hidden text-[28px] sm:text-[36px] text-white mb-4"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 800 }}
-          >
-            after5
-          </h2>
+          <div className="reveal-hidden mb-4">
+            <span
+              className="text-[36px] sm:text-[44px] text-white leading-none"
+              style={{
+                fontFamily: "'Cabinet Grotesk', sans-serif",
+                fontWeight: 900,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              after5<span className="text-[#2EFFA1]">.</span>
+            </span>
+          </div>
+
           <div className="reveal-hidden max-w-[560px] mb-8">
             <p className="text-[17px] text-white/60 leading-[1.65] mb-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               After5 is our AI sales agent product. Built for one problem... leads that arrive when nobody is watching.
@@ -68,7 +77,7 @@ export default function After5Section() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
-            {channels.map((c, i) => {
+            {channelsBase.map((c, i) => {
               const Icon = c.icon;
               return (
                 <div
@@ -89,7 +98,7 @@ export default function After5Section() {
                     {c.body}
                   </p>
                   <p className="text-[#2EFFA1] text-[15px]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                    {c.price}
+                    From {convert(c.gbp)}
                   </p>
                 </div>
               );

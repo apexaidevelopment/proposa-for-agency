@@ -3,17 +3,20 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const cards = [
   {
-    word: 'ROI',
+    line1: 'ROI',
+    line2: 'Focused',
     title: 'ROI First',
     body: 'Every system starts with one question. What is the measurable return. If the ROI case is not clear before we start, we say so.',
   },
   {
-    word: 'Strategy',
+    line1: 'Strategic',
+    line2: 'Thinking',
     title: 'Strategic Thinking',
     body: 'Automation without strategy is just chasing trends. We understand the business, the market and the goals first. Then we design.',
   },
   {
-    word: 'Craft',
+    line1: 'Creative',
+    line2: 'Execution',
     title: 'Creative Execution',
     body: 'We strategise, plan and design creatively, thinking different, spotting opportunities others would miss and seeing gaps to help gain an edge.',
   },
@@ -26,6 +29,8 @@ export default function HowWeThinkSection() {
   const handleTap = (i: number) => {
     setFlippedIndex(flippedIndex === i ? null : i);
   };
+
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   return (
     <section id="approach" className="bg-[#0a0f1e] py-28 lg:py-36 px-6" ref={ref}>
@@ -51,13 +56,19 @@ export default function HowWeThinkSection() {
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <span
-                    className="text-[64px] lg:text-[72px] text-white leading-none"
+                    className="text-[56px] lg:text-[64px] text-white leading-none"
                     style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 800 }}
                   >
-                    {card.word}
+                    {card.line1}
                   </span>
-                  <span className="text-[11px] text-white/20 tracking-[0.15em] uppercase mt-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                    Hover to flip
+                  <span
+                    className="text-[32px] lg:text-[36px] text-white/50 leading-none mt-1"
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}
+                  >
+                    {card.line2}
+                  </span>
+                  <span className="text-[11px] text-white/20 tracking-[0.15em] uppercase mt-5" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    {isMobile ? 'Tap to flip' : 'Hover to flip'}
                   </span>
                 </div>
                 <div className="flip-card-back text-center">

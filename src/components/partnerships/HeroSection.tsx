@@ -96,11 +96,11 @@ export default function HeroSection() {
 
             <div style={fade(1000)}>
               <button
-                onClick={() => setVslOpen(true)}
+                onClick={scrollToBooking}
                 className="bg-[#0152ff] text-white text-base px-10 py-4 rounded-full hover:scale-[1.03] hover:brightness-110 hover:shadow-[0_0_40px_rgba(1,82,255,0.5)] transition-all duration-200"
                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}
               >
-                Watch the Breakdown. Seriously, just 4 mins.
+                Book a Partnership Discovery Call
               </button>
             </div>
           </div>
@@ -128,16 +128,6 @@ export default function HeroSection() {
           <ChevronDown className="w-5 h-5 text-white/30" />
         </div>
       </section>
-
-      <div className="bg-[#0a0f1e] text-center pb-16 pt-4">
-        <button
-          onClick={scrollToBooking}
-          className="bg-[#0152ff] text-white text-base px-10 py-4 rounded-full hover:scale-[1.03] hover:brightness-110 hover:shadow-[0_0_40px_rgba(1,82,255,0.5)] transition-all duration-200"
-          style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}
-        >
-          Book a Free Strategy Call
-        </button>
-      </div>
 
       {vslOpen && (
         <div
